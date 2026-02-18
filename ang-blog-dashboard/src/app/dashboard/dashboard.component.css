@@ -1,0 +1,17 @@
+.card {
+  border: none;
+  box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+  height: 200px;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+/* .card .card-body {
+  background-color: var(--secondary-color);
+} */
+h1, h2 {
+  color: var(--primary-color);
+}

@@ -1,0 +1,68 @@
+<div class="card mt-5 mb-5 container">
+  <div class="card-body">
+    <div class="text-center mt-3 mb-5">
+      <h3>SUBSCRIPTION FORM</h3>
+      <p class="subs-text">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias,
+        quisquam.
+      </p>
+      <div class="alert alert-danger mt-3" *ngIf="showError">
+        Email is already in use
+      </div>
+      <div class="alert alert-info mt-3" *ngIf="showMessage">
+        thank you for subscribing to our newsletter service. stay tuned for
+        awesome blog post.
+      </div>
+
+      <form
+        class="row mb-5 mt-5"
+        #form="ngForm"
+        (ngSubmit)="onSubmit(form.value)"
+        *ngIf="!showMessage"
+      >
+        <div class="form-group col-md-5">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Your Name"
+            name="name"
+            ngModel
+            required
+            #Name="ngModel"
+            [ngClass]="{ 'is-invalid': Name.touched && Name.invalid }"
+          />
+          <div class="text-danger" *ngIf="Name.touched && Name.invalid">
+            <div *ngIf="Name.errors?.['required']">Name is required</div>
+          </div>
+        </div>
+        <div class="form-group col-md-5">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email Address"
+            name="email"
+            ngModel
+            required
+            email
+            #Email="ngModel"
+            [ngClass]="{ 'is-invalid': Email.touched && Email.invalid }"
+          />
+          <div class="text-danger" *ngIf="Email.touched && Email.invalid">
+            <div *ngIf="Email.errors?.['required']">Email is required</div>
+            <div *ngIf="Email.errors?.['email']">
+              Please enter a valid email address
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button
+            class="btn btn-info btn-block btn-sub"
+            [disabled]="form.invalid"
+          >
+            SUBSCRIPTION
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

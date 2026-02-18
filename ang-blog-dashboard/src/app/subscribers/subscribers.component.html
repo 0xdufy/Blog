@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-main">
+        <div class="card-body text-center">
+          <h3>All Subscribers</h3>
+          <p>From Here Here You Can Manage Your Subscribers.</p>
+          <button class="btn btn-warning ms-2" routerLink="/">
+            Back To Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <app-loading-spinner *ngIf="displayLoading"></app-loading-spinner>
+      <div class="card" *ngIf="!displayLoading">
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead class="text-center">
+              <th>No</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let sub of subs; let i = index" class="text-center">
+                <td>{{ i + 1 }}</td>
+                <td>{{ sub?.data.name }}</td>
+                <td>{{ sub?.data.email }}</td>
+                <td>
+                  <button class="btn btn-small btn-danger ms-2" (click)="onDelete(sub?.id)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

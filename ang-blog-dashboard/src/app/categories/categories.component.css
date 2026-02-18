@@ -1,0 +1,22 @@
+input {
+  height: 50px;
+  padding-left: 20px;
+  box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+  border: none;
+}
+.btn-block {
+  background-color: var(--primary-color)!important;
+  color: white;
+  height: 48px;
+  border: none;
+}
+.row>.form {
+  background-color: var(--secondary-color);
+}
+h3 {
+  color: var(--primary-color);
+}
+.card {
+  box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+  border: none;
+}

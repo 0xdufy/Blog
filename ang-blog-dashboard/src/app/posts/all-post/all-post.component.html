@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-main">
+        <div class="card-body text-center">
+          <h3>All Blog Posts</h3>
+          <p>From Here Here You Can Manage Your Blog Posts.</p>
+          <button class="btn btn-info btn-add" routerLink="/posts/new">
+            Add New Post
+          </button>
+          <button class="btn btn-warning ms-2" routerLink="/">
+            Back To Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <app-loading-spinner *ngIf="displayLoading"></app-loading-spinner>
+      <div class="card" *ngIf="!displayLoading">
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead class="text-center">
+              <th>No</th>
+              <th>Post Image</th>
+              <th>Title</th>
+              <!-- <th>Excerpt</th> -->
+              <th>Category</th>
+              <th>Date</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of posts; let i = index">
+                <td style="max-width: 10px">{{ i + 1 }}</td>
+                <td style="max-width: 200px; min-width: 200px">
+                  <img
+                    src="{{ item.data.postImgPath }}"
+                    class="img img-fluid"
+                    alt=""
+                  />
+                </td>
+                <td style="max-width: 150px">{{ item.data.title }}</td>
+                <!-- <td style="max-width: 250px;">{{ item.data.excerpt }}</td> -->
+                <td style="max-width: 120px">
+                  {{ item.data.category.categoryName }}
+                </td>
+                <td>{{ item.data.createdAt.toMillis() | date }}</td>
+                <td>
+                  <button
+                    class="btn btn-small btn-warning"
+                    (click)="onEdit(item.id)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-small btn-danger ms-2"
+                    (click)="onDelete(item.id)"
+                  >
+                    Delete
+                  </button>
+
+                  <button
+                    class="btn btn-small btn-success ms-2"
+                    (click)="onFeatured(item.id, true)"
+                    *ngIf="!item.data.isFeatured"
+                  >
+                    Mark Featured
+                  </button>
+                  <button
+                    class="btn btn-small btn-info ms-2"
+                    (click)="onFeatured(item.id, false)"
+                    *ngIf="item.data.isFeatured"
+                  >
+                    Remove Featured
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

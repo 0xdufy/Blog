@@ -1,0 +1,9 @@
+<header class="navbar navbar-expand-lg bg-white fixed-top flex-column">
+  <div class="container justify-content-center mb-2 mt-2">
+    <a class="title" routerLink="/">ang-blog</a>
+  </div>
+  <div class="container justify-content-center" *ngIf="isLoggedIn">
+    <a class="email me-3">{{ email }}</a>
+    <button class="btn btn-sm" (click)="logOut()">Logout</button>
+  </div>
+</header>

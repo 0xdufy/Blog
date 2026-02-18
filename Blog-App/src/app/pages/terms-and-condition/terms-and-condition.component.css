@@ -1,0 +1,19 @@
+section {
+  margin-top: 190px;
+}
+.container {
+  background-color: var(--primary-color);
+}
+.container>div {
+  background-color: var(--secondary-color);
+}
+p {
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+.btn-sub {
+  background-color: var(--primary-color)!important;
+  color: white;
+  height: 48px;
+  border: none;
+}
